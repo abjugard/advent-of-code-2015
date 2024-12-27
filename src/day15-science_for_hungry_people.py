@@ -1,6 +1,6 @@
 from collections import Counter
 from itertools import combinations_with_replacement
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 15)
 
@@ -32,9 +32,11 @@ def parse(line):
 def main():
   data = get_data(today, parse)
   stats = {ingredient: stat_values for ingredient, stat_values in data}
-
-  print(f'{today} star 1 = {optimise_cookie_recipe(stats)}')
-  print(f'{today} star 2 = {optimise_cookie_recipe(stats, meal_replacement=True)}')
+  print_stars(
+    today,
+    optimise_cookie_recipe(stats),
+    optimise_cookie_recipe(stats, meal_replacement=True)
+  )
 
 
 if __name__ == '__main__':

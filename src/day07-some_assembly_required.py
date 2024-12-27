@@ -54,9 +54,12 @@ def parse_data(data):
 def main():
   inputs, operations = parse_data(get_data(today))
   star1 = calculate_a(inputs.copy(), operations.copy())
-  print(f'{today} star 1 = {star1}')
   inputs['b'] = star1
-  print(f'{today} star 1 = {calculate_a(inputs, operations)}')
+  print_stars(
+    today,
+    star1,
+    calculate_a(inputs, operations)
+  )
 
 
 if __name__ == '__main__':

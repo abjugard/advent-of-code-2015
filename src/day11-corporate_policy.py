@@ -1,6 +1,6 @@
 from itertools import pairwise
 from string import ascii_lowercase
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 11)
 
@@ -53,8 +53,11 @@ def password_generator(password):
 def main():
   data = next(get_data(today))
   star_gen = password_generator(data)
-  print(f'{today} star 1 = {next(star_gen)}')
-  print(f'{today} star 2 = {next(star_gen)}')
+  print_stars(
+    today,
+    next(star_gen),
+    next(star_gen)
+  )
 
 
 if __name__ == '__main__':

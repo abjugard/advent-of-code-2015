@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 8)
 escape_chars = '\\"'
@@ -6,8 +6,11 @@ escape_chars = '\\"'
 
 def main():
   data = list(get_data(today))
-  print(f'{today} star 1 = {sum(len(l) - len(eval(l)) for l in data)}')
-  print(f'{today} star 2 = {sum(sum(l.count(c) for c in escape_chars) + 2 for l in data)}')
+  print_stars(
+    today,
+    sum(len(l) - len(eval(l)) for l in data),
+    sum(sum(l.count(c) for c in escape_chars) + 2 for l in data)
+  )
 
 
 if __name__ == '__main__':

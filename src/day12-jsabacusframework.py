@@ -1,5 +1,5 @@
 import json
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 12)
 
@@ -29,8 +29,11 @@ def sum_numbers(data):
 
 def main():
   data = json.loads(''.join(get_data(today)))
-  print(f'{today} star 1 = {sum_numbers(flatten(data))}')
-  print(f'{today} star 2 = {sum_numbers(flatten(data, ignore="red"))}')
+  print_stars(
+    today,
+    sum_numbers(flatten(data)),
+    sum_numbers(flatten(data, ignore="red"))
+  )
 
 
 if __name__ == '__main__':

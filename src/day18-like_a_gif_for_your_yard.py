@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 from santas_little_utils import build_dict_map, neighbours
 
 today = day(2015, 18)
@@ -29,8 +29,11 @@ def simulate_game_of_life(map_data, lit_corners=False):
 
 def main():
   map_data = build_dict_map(get_data(today), conv_func=lambda c, p: c == '#')
-  print(f'{today} star 1 = {simulate_game_of_life(map_data)}')
-  print(f'{today} star 2 = {simulate_game_of_life(map_data, lit_corners=True)}')
+  print_stars(
+    today,
+    simulate_game_of_life(map_data),
+    simulate_game_of_life(map_data, lit_corners=True)
+  )
 
 
 if __name__ == '__main__':

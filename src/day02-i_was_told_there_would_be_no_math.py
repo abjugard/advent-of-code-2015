@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 2)
 
@@ -25,8 +25,11 @@ def parse(line):
 
 def main():
   data = list(get_data(today, parse))
-  print(f'{today} star 1 = {calculate_wrapping_paper(data)}')
-  print(f'{today} star 1 = {calculate_ribbon(data)}')
+  print_stars(
+    today,
+    calculate_wrapping_paper(data),
+    calculate_ribbon(data)
+  )
 
 
 if __name__ == '__main__':

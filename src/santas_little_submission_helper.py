@@ -2,13 +2,16 @@ import json, re, importlib, sys
 from time import sleep
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from santas_little_helpers import aoc_root, config
 from io import StringIO
 from math import ceil
 
+aoc_root = Path(__file__).resolve().parent.parent
 aoc_submission_history = aoc_root / '.submission-history'
 aoc_response_time_re = re.compile(r'You have ((?P<minutes>\d+)m |)(?P<seconds>\d+)s left to wait.')
 standard_answer_re = re.compile(r'(\d{4}-\d{2}-\d{2}) star (\d) = (.+)')
+
+with (aoc_root / 'config.json').open('r') as config_file:
+  config = json.load(config_file)
 
 
 def get_submission_history(today: date, level: int):
@@ -21,6 +24,14 @@ def get_submission_history(today: date, level: int):
 
   with file_path.open() as f:
     return json.load(f)
+
+
+def get_solution(today: date, level: int):
+  history = get_submission_history(today, level)
+  for answer, meta in reversed(list(history.items())):
+    if 'success' in meta and meta['success'] == True:
+      return answer
+  return None
 
 
 def wait_until(unlock_time):

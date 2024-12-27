@@ -1,4 +1,6 @@
+import operator
 from collections import deque, defaultdict, namedtuple
+from functools import reduce
 from itertools import product
 
 from santas_little_helpers import alphabet
@@ -167,12 +169,7 @@ def neighbours(p=(0, 0), borders=None, diagonals=False, normal=True, labels=Fals
 
 
 def mul(numbers):
-  result = 1
-  for n in numbers:
-    if n == 0:
-      return 0
-    result *= n
-  return result
+  return reduce(operator.mul, numbers, 1)
 
 
 def transpose(l):

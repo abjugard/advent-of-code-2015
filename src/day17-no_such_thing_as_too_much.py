@@ -1,6 +1,6 @@
 from collections import defaultdict
 from itertools import combinations
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 17)
 
@@ -16,9 +16,10 @@ def fill_containers(data):
 
 def main():
   data = list(get_data(today, int))
-  star1, star2 = fill_containers(data)
-  print(f'{today} star 1 = {star1}')
-  print(f'{today} star 2 = {star2}')
+  print_stars(
+    today,
+    *fill_containers(data)
+  )
 
 
 if __name__ == '__main__':

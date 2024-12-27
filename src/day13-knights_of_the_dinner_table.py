@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 from itertools import pairwise, permutations
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 13)
 parse_re = re.compile(r'(\w+) would (\w+) (\d+) happiness units by sitting next to (\w+).')
@@ -37,8 +37,11 @@ def main():
   guests = defaultdict(lambda: defaultdict(int))
   for l, r, change in data:
     guests[l][r] = change
-  print(f'{today} star 1 = {optimise_seating(guests)}')
-  print(f'{today} star 2 = {optimise_seating(guests, additional=["Me"])}')
+  print_stars(
+    today,
+    optimise_seating(guests),
+    optimise_seating(guests, additional=["Me"])
+  )
 
 
 if __name__ == '__main__':

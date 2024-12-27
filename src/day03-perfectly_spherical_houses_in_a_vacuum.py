@@ -1,5 +1,5 @@
 from santas_little_classes import Origo, Heading
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 3)
 
@@ -34,8 +34,11 @@ def santa_and_robo(data):
 
 def main():
   data = next(get_data(today))
-  print(f'{today} star 1 = {santa_only(data)}')
-  print(f'{today} star 1 = {santa_and_robo(data)}')
+  print_stars(
+    today,
+    santa_only(data),
+    santa_and_robo(data)
+  )
 
 
 if __name__ == '__main__':

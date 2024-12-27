@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 from santas_little_utils import ints, all_points
 
 today = day(2015, 6)
@@ -42,8 +42,11 @@ def parse(line):
 
 def main():
   instructions = list(get_data(today, parse))
-  print(f'{today} star 1 = {set_dumb_lights(instructions)}')
-  print(f'{today} star 1 = {set_dimmable_lights(instructions)}')
+  print_stars(
+    today,
+    set_dumb_lights(instructions),
+    set_dimmable_lights(instructions)
+  )
 
 
 if __name__ == '__main__':

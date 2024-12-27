@@ -1,5 +1,5 @@
 from itertools import groupby
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 10)
 
@@ -16,8 +16,11 @@ def look_and_say(sequence, n=40):
 
 def main():
   data = next(get_data(today))
-  print(f'{today} star 1 = {look_and_say(data)}')
-  print(f'{today} star 2 = {look_and_say(data, n=50)}')
+  print_stars(
+    today,
+    look_and_say(data),
+    look_and_say(data, n=50)
+  )
 
 
 if __name__ == '__main__':

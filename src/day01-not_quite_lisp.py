@@ -1,5 +1,5 @@
 from collections import Counter
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 1)
 
@@ -15,9 +15,11 @@ def first_visit_to_basement(data):
 def main():
   data = next(get_data(today))
   counts = Counter(data)
-  print(f'{today} star 1 = {counts["("]-counts[")"]}')
-  print(f'{today} star 2 = {first_visit_to_basement(data)}')
-
+  print_stars(
+    today,
+    counts["("]-counts[")"],
+    first_visit_to_basement(data)
+  )
 
 if __name__ == '__main__':
   timed(main)

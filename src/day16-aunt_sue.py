@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 16)
 sue_criteria = {
@@ -44,8 +44,11 @@ def parse(line):
 
 def main():
   data = list(get_data(today, parse))
-  print(f'{today} star 1 = {analyse_data_points(data)}')
-  print(f'{today} star 2 = {analyse_data_points(data, ranges=True)}')
+  print_stars(
+    today,
+    analyse_data_points(data),
+    analyse_data_points(data, ranges=True)
+  )
 
 
 if __name__ == '__main__':

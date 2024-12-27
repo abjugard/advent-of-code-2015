@@ -1,5 +1,5 @@
 from collections import defaultdict
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 23)
 
@@ -44,8 +44,11 @@ def parse(line):
 
 def main():
   program = list(get_data(today, parse))
-  print(f'{today} star 1 = {run_vm(program)}')
-  print(f'{today} star 2 = {run_vm(program, a=1)}')
+  print_stars(
+    today,
+    run_vm(program),
+    run_vm(program, a=1)
+  )
 
 
 if __name__ == '__main__':

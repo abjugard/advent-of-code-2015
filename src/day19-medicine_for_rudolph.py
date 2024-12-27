@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 19)
 
@@ -35,8 +35,11 @@ def main():
   replacements, molecule = list(get_data(today, groups=True))
   replacements = [line.split(' => ') for line in replacements]
   molecule = next(molecule)
-  print(f'{today} star 1 = {distinct_molecules(replacements, molecule)}')
-  print(f'{today} star 2 = {steps_to_make(replacements, molecule)}')
+  print_stars(
+    today,
+    distinct_molecules(replacements, molecule),
+    steps_to_make(replacements, molecule)
+  )
 
 
 if __name__ == '__main__':

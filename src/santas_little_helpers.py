@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Callable, Iterator, Any
 from functools import reduce
 from string import ascii_lowercase, ascii_uppercase
+from santas_little_submission_helper import get_solution
 
 setup_start = time()
 
@@ -185,6 +186,34 @@ def print_result(delta: [float], prefix: str = '', suffix: str = ''):
   if suffix != '':
     suffix = ' ' + suffix
   print(f'--- {prefix}{divider}{delta*multiplier:.2f} {unit}{suffix} ---')
+
+
+state_emoji = {
+  True:  '✅',
+  False: '❌',
+  None:  '🤷‍♂️'
+}
+
+
+def print_stars(today: date, star1=None, star2=None):
+  def is_solved(level: int, answer):
+    expected = get_solution(today, level)
+    if expected is None:
+      return None
+    if today.day == 25 and level == 2:
+      return expected is not None
+    return str(answer) == expected
+  star1_solved = False
+  if star1 is not None:
+    star1_solved = is_solved(1, star1)
+    print(f'{today} star 1 {state_emoji[star1_solved]} = {star1}')
+  if today.day == 25 and star1_solved:
+    star2 = 'Merry Christmas! 🎄'
+  if star2 is not None:
+    solved = is_solved(1, star1)
+    print(f'{today} star 2 {state_emoji[solved]} = {star2}')
+  if star1 == star2 is None:
+    print('No stars supplied 😢')
 
 
 def run_all():

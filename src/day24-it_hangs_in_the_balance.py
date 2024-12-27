@@ -1,5 +1,5 @@
 from itertools import combinations
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 from santas_little_utils import mul
 
 today = day(2015, 24)
@@ -18,8 +18,11 @@ def find_qe(packages, parts=3):
 
 def main():
   data = set(get_data(today, int))
-  print(f'{today} star 1 = {find_qe(data)}')
-  print(f'{today} star 2 = {find_qe(data, parts=4)}')
+  print_stars(
+    today,
+    find_qe(data),
+    find_qe(data, parts=4)
+  )
 
 
 if __name__ == '__main__':

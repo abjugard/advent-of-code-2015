@@ -1,4 +1,4 @@
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 5)
 vowels = set('aeiou')
@@ -37,8 +37,11 @@ def main():
   for word in get_data(today):
     star1 += is_nice(word)
     star2 += real_is_nice(word)
-  print(f'{today} star 1 = {star1}')
-  print(f'{today} star 1 = {star2}')
+  print_stars(
+    today,
+    star1,
+    star2
+  )
 
 
 if __name__ == '__main__':

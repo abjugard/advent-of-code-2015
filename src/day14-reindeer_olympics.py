@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 from santas_little_utils import ints
 
 today = day(2015, 14)
@@ -32,9 +32,10 @@ def parse(line):
 
 def main():
   data = list(get_data(today, parse))
-  star1, star2 = simulate_race(data)
-  print(f'{today} star 1 = {star1}')
-  print(f'{today} star 2 = {star2}')
+  print_stars(
+    today,
+    *simulate_race(data)
+  )
 
 
 if __name__ == '__main__':

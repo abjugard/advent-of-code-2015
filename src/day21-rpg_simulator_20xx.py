@@ -1,5 +1,5 @@
 from itertools import combinations
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 21)
 
@@ -64,9 +64,10 @@ def simulate_battle(boss):
 
 def main():
   boss = tuple(get_data(today, [('split', ': '), ('elem', 1), ('func', int)]))
-  star1, star2 = simulate_battle(boss)
-  print(f'{today} star 1 = {star1}')
-  print(f'{today} star 2 = {star2}')
+  print_stars(
+    today,
+    *simulate_battle(boss)
+  )
 
 
 if __name__ == '__main__':

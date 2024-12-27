@@ -1,5 +1,5 @@
 import re
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 25)
 parse_re = re.compile(r'row (\d+), column (\d+)')
@@ -25,7 +25,10 @@ def parse(line):
 
 def main():
   row, col = next(get_data(today, parse, groups=False))
-  print(f'{today} star 1 = {break_copy_protection(row, col)}')
+  print_stars(
+    today,
+    break_copy_protection(row, col)
+  )
 
 
 if __name__ == '__main__':

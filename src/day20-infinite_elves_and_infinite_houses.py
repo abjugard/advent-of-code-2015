@@ -1,5 +1,5 @@
 from collections import defaultdict
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 20)
 MAX_ELVES = 790_000 # Crank this number for other inputs
@@ -16,8 +16,11 @@ def find_house_index(target, elf_limit=MAX_ELVES, elf_efficiency=10):
 
 def main():
   data = next(get_data(today, int))
-  print(f'{today} star 1 = {find_house_index(data)}')
-  print(f'{today} star 2 = {find_house_index(data, elf_limit=50, elf_efficiency=11)}')
+  print_stars(
+    today,
+    find_house_index(data),
+    find_house_index(data, elf_limit=50, elf_efficiency=11)
+  )
 
 
 if __name__ == '__main__':

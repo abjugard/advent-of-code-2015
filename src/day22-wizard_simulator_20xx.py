@@ -1,5 +1,5 @@
 from math import inf as infinity
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 22)
 
@@ -48,8 +48,11 @@ def fight(boss, hard_mode=False):
 
 def main():
   boss = tuple(get_data(today, [('split', ': '), ('elem', 1), ('func', int)]))
-  print(f'{today} star 1 = {fight(boss)}')
-  print(f'{today} star 2 = {fight(boss, hard_mode=True)}')
+  print_stars(
+    today,
+    fight(boss),
+    fight(boss, hard_mode=True)
+  )
 
 
 if __name__ == '__main__':

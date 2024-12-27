@@ -1,6 +1,6 @@
 from collections import defaultdict
 from itertools import pairwise, permutations
-from santas_little_helpers import day, get_data, timed
+from santas_little_helpers import day, get_data, timed, print_stars
 
 today = day(2015, 9)
 
@@ -19,8 +19,11 @@ def main():
     sum(distance[l][r] for l, r in pairwise(path))
     for path in permutations(distance.keys())
   ]
-  print(f'{today} star 1 = {min(path_lengths)}')
-  print(f'{today} star 2 = {max(path_lengths)}')
+  print_stars(
+    today,
+    min(path_lengths),
+    max(path_lengths)
+  )
 
 
 if __name__ == '__main__':
